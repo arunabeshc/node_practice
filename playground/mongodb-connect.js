@@ -19,19 +19,43 @@ var todos=mongoose.model('todos',{
     default: false
   }
 })
+//
+// todos.findByIdAndRemove("5b12142be9908a1d30fea55c").then((docs)=>{
+//   console.log(docs,' removed !!');
+// }).catch((e)=>{
+//   console.log(e);
+// })
 
+//
+// todos.remove({completed:true}).then((docs)=>{
+//   console.log(docs,' removed !!');
+// }).catch((e)=>{
+//   console.log(e);
+// })
 
-todos.find({}).then((docs)=>{
-  console.log(docs);
-}).catch((e)=>{
-  console.log(e);
-})
+todos.update({text:"done with running"}, { $set: { text: 'hohohho' }}, {returnOriginal : false}, (err,doc)=>{
+if(!err){
+  console.log(doc);
+}
+else{
+  console.log('sorry error !!');
+}
+});
 
-todos.count({completed:true}).then((x)=>{
-  console.log(x);
-}).catch((e)=>{
-  consoloe.log(e);
-})
+//Model.update(query, { $set: { name: 'jason bourne' }}, options, callback)
+
+//
+// todos.find({}).then((docs)=>{
+//   console.log(docs);
+// }).catch((e)=>{
+//   console.log(e);
+// })
+//
+// todos.count({completed:true}).then((x)=>{
+//   console.log(x);
+// }).catch((e)=>{
+//   consoloe.log(e);
+// })
 
 
 // var todo1=new todos();
